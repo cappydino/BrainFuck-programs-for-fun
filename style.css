@@ -1,1 +1,49 @@
+body {
+	background-color: #ddd;
+	padding: 10px
+}
 
+#code-editor {
+	
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+#code-editor {
+	width:100%;
+	height: 300px;
+}
+
+#editor, #lines {
+  display: inline-block;
+	vertical-align: top;
+	font-family: 'Lucida Console', Monaco, monospace;
+	font-size: 13px;
+	line-height: 19px;
+  white-space: pre-wrap;
+	border: 0px none;
+	padding: 2px;
+	float: left;
+	resize: none;
+	overflow-y: scroll;
+	height: 100%;
+}
+
+#lines::-webkit-scrollbar {
+	width: 0px;
+}
+
+#lines {
+	width: 3%;
+	background-color: #45443C;
+	color: #E1B41F;
+	text-align: right;
+}
+
+#editor {
+	width: 96%;
+	background-color: #1e1916;
+	color: #ffffff;
+}

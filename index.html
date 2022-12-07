@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <title>Test website</title>
   <link href="style.css" rel="stylesheet" />
+	
+	<!-- j query !-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="interpreter.js"></script>
+	
+	
 </head>
+
 <body>
-  <p1>does it work?</p1>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <div id="code-editor">
+		<div id="lines">1.</div>
+		
+		<textarea id="editor" spellcheck="false"></textarea>
+	</div>
+	<script>
+		let textarea = document.querySelector('#editor')
+		let lineNumbers = document.querySelector('#lines')
+		const charOverflow = 112;
+
+		function generateLinesText(inputLines = string) {
+			let result = '';
+
+			let lines = inputLines.split('\n');
+			for (let i = 0; i < lines.length; i++) {
+				result += (i + 1).toString() + ".\n";
+				for (let j = 0; j < ~~((lines[i].length - 1) / charOverflow); j++) {
+					result += '\n';
+				}
+			}
+
+			return result;
+		}
+
+
+		function updateLineNumbers() {
+			let numberOfLines = document.querySelector("#editor").value
+			lineNumbers.textContent = generateLinesText(numberOfLines);
+		}
+
+		textarea.addEventListener('keydown', event => {
+			setTimeout(updateLineNumbers, 0)
+		})
+
+		textarea.addEventListener('scroll', event => {
+			lineNumbers.scrollTo(0,textarea.scrollTop)
+		})
+
+		lineNumbers.addEventListener('scroll', event => {
+			textarea.scrollTo(0,lineNumbers.scrollTop)
+		})
+	</script>
+	
+	<br>
+	
+	<div id="button-pannel">
+		<button onclick="runCode(0,0)">Run</button>
+	</div>
+	
+	<div id="output">hiii
+	</div>
+	
+  
   <script>
   </script>
 </body>

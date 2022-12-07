@@ -1,1 +1,3 @@
-console.log("working")
+function runCode(code, outputDestination) {
+  console.log("Working")
+}
